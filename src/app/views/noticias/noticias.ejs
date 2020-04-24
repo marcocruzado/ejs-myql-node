@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Noticias</title>
+    <!--font Awesome-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <style>
+      .tacho {
+        color: rgb(255, 85, 85);
+        transition: 1s;
+      }
+      .tacho:hover {
+        cursor: pointer;
+        color: rgb(122, 5, 5);
+      }
+      .editar {
+        color: rgb(15, 59, 13);
+        transition: 1s;
+      }
+      .editar:hover {
+        cursor: pointer;
+        color: rgb(41, 187, 12);
+      }
+    </style>
+    <nav class="navbar nabvar-dark bg-dark">
+      <a href="#" class="navbar-brand mx-auto">Noticias</a>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 mt-4 text-center">
+          <table class="table table-striped">
+            <tr>
+              <th>ID</th>
+              <th>TITULO</th>
+              <th>Noticia</th>
+              <th>OPCIONES</th>
+            </tr>
+            <% for (var i=0 ;i< noticia.length;i++){ %>
+
+            <tr>
+              <td>
+                <%= noticia[i].id%>
+              </td>
+              <td>
+                <%= noticia[i].title%>
+              </td>
+              <td>
+                <%= noticia[i].noticia%>
+              </td>
+              <td style="display: inline-block;">
+                <div>
+                  <i id="jstacho" class="fa fa-trash p-1 tacho"></i>
+                  <i id="jseditar" class="fa fa-edit p-1 editar"></i>
+                </div>
+              </td>
+            </tr>
+
+            <% } %>
+          </table>
+        </div>
+        <div class="col-md-6 mt-4 card">
+          <form action="/noticias" method="POST" class="card-body">
+            <h3 class="card-title">
+              Agrefa una Noticia
+            </h3>
+            <div class="form-group">
+              <input
+                id="title"
+                type="text"
+                name="title"
+                class="form-control"
+                placeholder="Titulo"
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="text"
+                name="noticia"
+                class="form-control"
+                placeholder="Contenido de notica"
+              />
+            </div>
+            <input type="submit" class="btn btn-primary btn-block" />
+          </form>
+        </div>
+      </div>
+    </div>
+    <script>
+      document.getElementById("title").focus();
+    </script>
+  </body>
+</html>
